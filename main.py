@@ -54,11 +54,20 @@ def main():
                 print("\nНичего не найдено.")
             logger.log_query(f"Поиск по жанру: {genre}, год: {year}")
 
+
         elif choice == "3":
+
             top_queries = logger.get_top_queries()
-            print("\nТОП-10 запросов:")
-            for query in top_queries:
-                print(f"{query['query_text']} — {query['count_query']} раз(а)")
+
+            if top_queries:
+                print("\nТОП-10 запросов:")
+
+                for idx, query in enumerate(top_queries, 1):
+                    print(f"{idx}. {query['query_text']} — {query['count_query']} раз(а)")
+
+            else:
+                print("\nНет записей для ТОП-10 запросов.")
+
 
         elif choice == "4":
             print("Выход из программы.")
