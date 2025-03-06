@@ -23,7 +23,10 @@ LOG_DB_CONFIG = {
 # Токен Telegram-бота
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', 'default_token')
 
+
 # Вывод конфигурации для проверки
 print("FILM_DB_CONFIG:", FILM_DB_CONFIG)
 print("LOG_DB_CONFIG:", LOG_DB_CONFIG)
 print("TELEGRAM_BOT_TOKEN:", TELEGRAM_BOT_TOKEN)
+
+# '''pip install -r requirements.txt'''
