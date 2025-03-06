@@ -17,13 +17,13 @@ def validate_params(func):
     """Декоратор для проверки параметров запроса."""
     @functools.wraps(func)
     def wrapper(self, *args, **kwargs):
-        genre = kwargs.get('genre')
-        year = kwargs.get('year')
+        if func.__name__ == "search_by_genre_and_year":
+            genre, year = args  # Получаем параметры явно
 
-        if genre and genre not in self.get_all_genres():
-            raise ValueError(f"Жанр '{genre}' не существует.")
-        if year and (year < 1990 or year > 2025):
-            raise ValueError(f"Год '{year}' неверен.")
+            if genre not in self.get_all_genres():
+                raise ValueError(f"Жанр '{genre}' не существует.")
+            if not (1990 <= year <= 2025):
+                raise ValueError(f"Год '{year}' неверен.")
 
         return func(self, *args, **kwargs)
     return wrapper

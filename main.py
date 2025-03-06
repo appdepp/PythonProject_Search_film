@@ -31,17 +31,20 @@ def main():
             years = film_search.get_all_years()
 
             print("\nДоступные жанры:", ", ".join(genres))
-            genre = input("\nВведите жанр: ")
+            genre = input("\nВведите жанр: ").strip().title()
 
             print("\nДоступные года:", ", ".join(map(str, years)))
             while True:
                 year = input("\nВведите год выпуска: ")
-                if year.isdigit() and len(year) == 4:
+                if year.isdigit():
                     year = int(year)
-                    break
-                else:
-                    print("Ошибка: введите 4-значный год!")
+                    if 1990 <= year <= 2025:
+                        break
+                print("Ошибка: введите корректный год от 1990 до 2025!")
 
+            if genre not in genres:
+                print("Ошибка: указанного жанра нет в базе!")
+                continue
             results = film_search.search_by_genre_and_year(genre, year)
             if results:
                 print("\nРезультаты поиска:")
@@ -60,6 +63,7 @@ def main():
         elif choice == "4":
             print("Выход из программы.")
             break
+
 
 if __name__ == "__main__":
     main()

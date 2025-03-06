@@ -10,8 +10,8 @@ class FilmSearch:
         query = "SELECT title FROM film WHERE title LIKE %s"
         return self.db.fetch_all(query, (f"%{title}%",))
 
-    @handle_errors  # Добавлен декоратор для обработки ошибок
     @validate_params  # Добавлен декоратор для проверки параметров
+    @handle_errors  # Добавлен декоратор для обработки ошибок
     def search_by_genre_and_year(self, genre, year):
         query = """
         SELECT title FROM film
