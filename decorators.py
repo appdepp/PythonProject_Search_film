@@ -17,9 +17,9 @@ logging.basicConfig(
 )
 
 # Для вывода в консоль (если нужно)
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(logging.Formatter("%(asctime)s - %(message)s"))
-logging.getLogger().addHandler(console_handler)
+# console_handler = logging.StreamHandler()
+# console_handler.setFormatter(logging.Formatter("%(asctime)s - %(message)s"))
+# logging.getLogger().addHandler(console_handler)
 
 def log_query(func):
     """Декоратор для логирования запросов."""
