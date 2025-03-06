@@ -1,8 +1,25 @@
 import functools
 import logging
+import os
+
+# Путь к файлу логов
+log_file = "film_bot.log"
+
+# Создание файла логов, если его нет
+if not os.path.exists(log_file):
+    with open(log_file, 'w'): pass  # Создаём файл, если его нет
 
 # Настройка логирования
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
+logging.basicConfig(
+    filename=log_file,
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s"
+)
+
+# Для вывода в консоль (если нужно)
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(logging.Formatter("%(asctime)s - %(message)s"))
+logging.getLogger().addHandler(console_handler)
 
 def log_query(func):
     """Декоратор для логирования запросов."""
