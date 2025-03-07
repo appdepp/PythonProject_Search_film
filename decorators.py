@@ -16,11 +16,6 @@ logging.basicConfig(
     format="%(asctime)s - %(message)s"
 )
 
-# Для вывода в консоль
-# console_handler = logging.StreamHandler()
-# console_handler.setFormatter(logging.Formatter("%(asctime)s - %(message)s"))
-# logging.getLogger().addHandler(console_handler)
-
 
 def log_query(func):
     @functools.wraps(func)
@@ -53,3 +48,9 @@ def handle_errors(func):
             print(f"Ошибка: {e}")
             return None
     return wrapper
+
+
+# Для вывода в консоль
+# console_handler = logging.StreamHandler()
+# console_handler.setFormatter(logging.Formatter("%(asctime)s - %(message)s"))
+# logging.getLogger().addHandler(console_handler)
