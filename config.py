@@ -12,7 +12,7 @@ FILM_DB_CONFIG = {
     'database': os.getenv('FILM_DB_NAME', 'default_db')
 }
 
-# База логов и аналитики (ich_edit)
+# База логов (ich_edit)
 LOG_DB_CONFIG = {
     'host': os.getenv('LOG_DB_HOST', 'default_host'),
     'user': os.getenv('LOG_DB_USER', 'default_user'),

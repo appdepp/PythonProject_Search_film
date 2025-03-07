@@ -6,13 +6,11 @@ class Database:
         self.connection = None
 
     def get_connection(self):
-        """Подключение к базе данных."""
         if self.connection is None or not self.connection.is_connected():
             self.connection = mysql.connector.connect(**self.db_config)
         return self.connection
 
     def execute_query(self, query, params=None):
-        """Выполнение SQL-запроса."""
         connection = self.get_connection()
         cursor = connection.cursor(dictionary=True)
         cursor.execute(query, params or ())
@@ -20,7 +18,6 @@ class Database:
         cursor.close()
 
     def fetch_all(self, query, params=None):
-        """Получение всех результатов запроса."""
         connection = self.get_connection()
         cursor = connection.cursor(dictionary=True)
         cursor.execute(query, params or ())

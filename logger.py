@@ -7,7 +7,6 @@ class Logger:
 
     @log_query
     def log_query(self, query_text):
-        """Логирование запроса в базе данных."""
         query = """
         INSERT INTO alex_search_logs (query_text, count_query) 
         VALUES (%s, 1)
@@ -17,7 +16,6 @@ class Logger:
 
     @handle_errors
     def get_top_queries(self):
-        """Получение 10 самых популярных запросов."""
         query = """
         SELECT query_text, count_query 
         FROM alex_search_logs 
